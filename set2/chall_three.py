@@ -47,6 +47,6 @@ def chall_three():
     ciphertext = encryption_oracle(msg)
     return detect_ecb(ciphertext)
 
-print(f"Detected ECB: {chall_three()}")
+#print(f"Detected ECB: {chall_three()}")
 
 

@@ -1,0 +1,125 @@
+b'000005I go crazy when I hear a cymbal'
+160 128
+['db1f48f82e597471200256b814aebd9a', '9befb293ccdca2a0f3a895dccfe0798a', '0b72cea7dde41c4b303be4cc88493b3d', '622b5fa6bb72185f1bbf366022033af5', '006cbf20cbbaabaa1879eda74e378a45']
+32 31
+Plaintext is 		b'000005I go crazy when I hear a cymbal\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10'
+Unpadded is 		b'000005I go crazy when I hear a cymbal\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'
+Unpadded twice is 	b'000005I go crazy when I hear a cymbal'
+
+
+
+
+b"000001With the bass kicked in and the Vega's are pumpin'"
+192 160
+['5f05977eb995c1146e4477aaf59ccb85', '14b81567aa9615b7258ff9ff6a4f3df5', 'ba706d04a226ab828ea3d5c97a62ac13', '240ca716217698559346f58057eb254d', '8423987f85736506d6220fa3946a55c7', '867a04d743a52329c6affc48ae4a40fe']
+32 31
+32 31
+32 31
+Plaintext is 		b"000001With the bass kicked in and the Vega's are pumpin'\x08\x08\x08\x08\x08\x08\x08\x08\x01"
+Unpadded is 		b"000001With the bass kicked in and the Vega's are pumpin'\x08\x08\x08\x08\x08\x08\x08\x08"
+Unpadded twice is 	b"000001With the bass kicked in and the Vega's are pumpin'"
+
+
+
+
+b'000006And a high hat with a souped up tempo'
+160 128
+['16be80365add8238780909394437939e', 'c8f89b78ff68a266a8e83cc4dedae0f0', '057810486b372c3c137bd513e5caa68a', 'bc3a886311706425a425b6288094ad80', 'c51cc7d49d64f73b3b8a8770ba9282b6']
+32 31
+32 31
+32 31
+32 31
+Plaintext is 		b'000006And a high hat with a soup\x01\x01'
+Unpadded is 		b'000006And a high hat with a soup\x01'
+Unpadded twice is 	b'000006And a high hat with a soup'
+
+
+
+
+Traceback (most recent call last):
+  File "chall_one.py", line 91, in <module>
+    assert real_plaintext == base64.b64decode(rand_msg)
+AssertionError
+b"000004Burning 'em, if you ain't quick and nimble"
+192 128
+['70edd0b3887e6de4b696e7ba8d576644', '42733a6686e2e41a1ad470a0be629615', 'c14fd5acdf13c41b10b9d1b7fe216926', 'ecec1ae35c7cc0bfbb7c9a031612ec6b', '26a81e7e326dd98c9219301a8808ae0d', 'da0ebd2371f40c0abe7150e06f049f55']
+32 31
+32 31
+32 30
+32 31
+Plaintext is 		b"000004Burning 'em, if you ain't quick and nimble\x01\x01"
+Unpadded is 		b"000004Burning 'em, if you ain't quick and nimble\x01"
+Unpadded twice is 	b"000004Burning 'em, if you ain't quick and nimble"
+
+
+
+
+b"000004Burning 'em, if you ain't quick and nimble"
+Traceback (most recent call last):
+  File "chall_one.py", line 82, in <module>
+    (ciphertext, iv) = encryption_oracle(base64.b64decode(rand_msg).hex())
+  File "chall_one.py", line 26, in encryption_oracle
+    return (cbc_encrypt(padded_msg, oracle_key, oracle_iv), oracle_iv)
+  File "/home/lucash/projects/cryptopals/set2/chall_two.py", line 16, in cbc_encrypt
+    (block_0, encryptor) = aes_ecb_encrypt_with_key(bytes.fromhex(iv_first_block), bytes.fromhex(key))
+ValueError: non-hexadecimal number found in fromhex() arg at position 31
+b'000005I go crazy when I hear a cymbal'
+160 128
+['506bb90da290183d9fe465847894d61a', '185927c3dd89f59ef620fe4a3c190ace', 'b9cfcca7399454c662890496ace9b4df', '251b6b58d8a01936ad0a6c0991766b15', 'b3032aef61c543c526df385050fc24ee']
+32 31
+32 31
+Plaintext is 		b'000005I go crazy when I hear a cymbal\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10'
+Unpadded is 		b'000005I go crazy when I hear a cymbal\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'
+Unpadded twice is 	b'000005I go crazy when I hear a cymbal'
+
+
+
+
+b'000002Quick to the point, to the point, no faking'
+192 160
+['e28bb3b2ab3a08a63d7edc6d16a910e4', 'aea1e95330b900cf9ba046e65038c3a2', '16cbb5b413c5fc2a9d976fe52ad85d68', 'cec7d90770875f47ebc4df0043709009', 'ba179caf34cd2877d9b17f9eba7b6d2e', 'e93548eef5f2d992056a0b0513c19025']
+32 31
+32 31
+32 31
+Plaintext is 		b'000002Quick to the point, to the point, no faking\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x01'
+Unpadded is 		b'000002Quick to the point, to the point, no faking\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f'
+Unpadded twice is 	b'000002Quick to the point, to the point, no faking'
+
+
+
+
+b'000009ith my rag-top down so my hair can blow'
+160 128
+['8186878c621fd0e7fa265383bfba2ce0', '75c336ef93265c447a516c16221802aa', '6c4e5dd27a46f440ff26432ee079bf63', '050ed692fc45869e7183489991d029a2', '2138fdea4a592f04b965c2e53953470d']
+32 31
+32 31
+Plaintext is 		b'000009ith my rag-top down so my hair can blow\x03\x03\x03\x01'
+Unpadded is 		b'000009ith my rag-top down so my hair can blow\x03\x03\x03'
+Unpadded twice is 	b'000009ith my rag-top down so my hair can blow'
+
+
+
+
+b"000004Burning 'em, if you ain't quick and nimble"
+192 128
+['f7bcb2de9fce94f26758ba5f826fe941', 'dbe4d0b8fcd33412d97682197ce86981', '2ce51cadc7cacd27b436461ceb927c46', '808d7721a3e280d6b697f2226e9f8ad5', '24c330e81f876cd0c3a751ea872b1318', '12737272389a072f0a34dad9c72c1ede']
+32 31
+Plaintext is 		b"000004Burning 'em, if you ain't quick and nimble\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10"
+Unpadded is 		b"000004Burning 'em, if you ain't quick and nimble\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10"
+Unpadded twice is 	b"000004Burning 'em, if you ain't quick and nimble"
+
+
+
+
+b'000006And a high hat with a souped up tempo'
+160 128
+['800f3805929803f93105d36af2dee2fa', '6854d4838bc47f63d7d380fa6ca7e6f1', '596fd9e89c3269b11042edff7b33fadd', '3144b1bb3dcd8e0a8e748e951f1729c6', '5938ff4ec056de1f4079c663e3f355b6']
+32 31
+32 31
+Plaintext is 		b'000006And a high hat with a souped up tempo\x05\x05\x05\x05\x05\x01'
+Unpadded is 		b'000006And a high hat with a souped up tempo\x05\x05\x05\x05\x05'
+Unpadded twice is 	b'000006And a high hat with a souped up tempo'
+
+
+
+

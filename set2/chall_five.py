@@ -31,7 +31,7 @@ def decrypt_profile(ciphertext, CipherObj):
     return aes_ecb_decrypt(CipherObj, ciphertext)
 
 
-# json format: {"email": "<email", "uid": "10", "role": "user"}
+# json format: {"email": "<email>", "uid": "10", "role": "user"}
 # attacker knows: ciphertext, and format of plaintext (but in a real scenario, UID might be more randomized)
 
 my_dict = {}
@@ -52,5 +52,6 @@ profile_for(email, my_dict)
 # cut first 48 bytes and append with step 1 ciphertext; 48 = length of formatted json
 plaintext = decrypt_profile(ciphertext[:48] + admin_ciphertext, CipherObj)
 
+print(plaintext.decode())
 assert "admin" in plaintext.decode()
 assert email in plaintext.decode()

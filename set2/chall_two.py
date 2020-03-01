@@ -31,19 +31,17 @@ def cbc_decrypt(ciphertext, key, iv):
 
     decrypted_text = []
     for ctext in ctext_blocks:
-        #print(bytes.fromhex(ctext))
         d_i = aes_ecb_decrypt(CipherObj, bytes.fromhex(ctext)).hex()
-
         decrypted_text.append(xor_hex_strings(iv_i, d_i))
         iv_i = ctext
 
-    return ''.join(decrypted_text[1:])
+    return ''.join(list(dict.fromkeys(decrypted_text)))
 
 #with open('10.txt', 'rb') as f:
 #    iv = '\x00'*block_size
 #    iv = iv.encode().hex()
 #    key = 'YELLOW SUBMARINE'.encode().hex()
-#    test_msg = "testttttttttttttttttt".encode().hex()
+#    test_msg = "testtttt".encode().hex()
 #    ciphertext = cbc_encrypt(test_msg, key, iv)
 #    plaintext = cbc_decrypt(ciphertext, key, iv)
 #    assert plaintext == pkcs7_pad(test_msg, block_size)

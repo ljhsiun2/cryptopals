@@ -15,6 +15,7 @@ def encryption_oracle(input_string):
 def decryption_oracle(ciphertext):
     plaintext = bytes.fromhex(cbc_decrypt(ciphertext, key, iv))
     normal_plaintext = pkcs7_unpad(plaintext)
+    #print(plaintext)
     cookie_data = normal_plaintext.split(b';')
     for data in cookie_data:
         try:
@@ -41,12 +42,12 @@ def inject_string_cbc(ciphertext, injection_string, start_pos):
 injection_string = '";admin=true;'
 input_string = "testAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 ciphertext = encryption_oracle(input_string)
-print(decryption_oracle(ciphertext))
+#print(decryption_oracle(ciphertext))
 #ciphertext2 = xor_single_byte(ciphertext, 99, 64)
 
 injected_ciphertext = inject_string_cbc(ciphertext, injection_string, 64)
 decrypted_text = decryption_oracle(injected_ciphertext)
-print(decrypted_text)
+#print(decrypted_text)
 
 assert b'admin' in decrypted_text
 
