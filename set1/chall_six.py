@@ -1,7 +1,7 @@
 import base64
-from chall_two import xor_hex_strings
-from chall_three import xor_single_byte
-from chall_five import xor_encrypt_string
+from set1.chall_two import xor_hex_strings
+from set1.chall_three import xor_single_byte
+from set1.chall_five import xor_encrypt_string
 
 def hamming_distance(str1, str2):
     assert(len(str1) == len(str2))
@@ -43,38 +43,41 @@ def decrypt_message(message, key):
     partitioned_blocks = partition_block(message, len(key))
     #print(partitioned_blocks)
     return ''.join([  ''.join([ chr( ord(key[i]) ^ block[i] ) for i in range(0, len(key) ) ]) for block in partitioned_blocks ])
-"""
-with open('6.txt', 'r') as f:
 
-    #print( base64.b64decode(f.read()))
-    message = base64.b64decode(f.read().strip())
+def main():
+    with open('6.txt', 'r') as f:
 
-    keysize_dict = find_likely_keysize(message, 2, 40)
-    sorted_scores = sorted(keysize_dict.values())
+        #print( base64.b64decode(f.read()))
+        message = base64.b64decode(f.read().strip())
 
-    # get top 4 scores; cryptopals recommends 3, but go the extra mile!
-    best_scores = ( sorted_scores[0], sorted_scores[1], sorted_scores[2], sorted_scores[3] )
-    best_key_len = [ key for key in keysize_dict if keysize_dict[key] in best_scores ]
-    best_key_scores = set(zip(best_key_len, best_scores))
+        keysize_dict = find_likely_keysize(message, 2, 40)
+        sorted_scores = sorted(keysize_dict.values())
 
-    potential_keys = []
-    for key_sz, score in best_key_scores:
-        transposed_blocks = transpose_blocks(message, key_sz)
+        # get top 4 scores; cryptopals recommends 3, but go the extra mile!
+        best_scores = ( sorted_scores[0], sorted_scores[1], sorted_scores[2], sorted_scores[3] )
+        best_key_len = [ key for key in keysize_dict if keysize_dict[key] in best_scores ]
+        best_key_scores = set(zip(best_key_len, best_scores))
 
-        #print(f"\n------\nUsing KEYSIZE = {key_sz}\n------")
-        probable_key = ''
-        for block in transposed_blocks:
-            #print( xor_single_byte(block.encode()) )
-            (decrypted_str, score, key_byte) = xor_single_byte(block.encode().hex())
-            if score != 0:
-               probable_key += chr(key_byte)
+        potential_keys = []
+        for key_sz, score in best_key_scores:
+            transposed_blocks = transpose_blocks(message, key_sz)
 
-        if key_sz == len(probable_key):
-            potential_keys.append(probable_key)
+            #print(f"\n------\nUsing KEYSIZE = {key_sz}\n------")
+            probable_key = ''
+            for block in transposed_blocks:
+                #print( xor_single_byte(block.encode()) )
+                (decrypted_str, score, key_byte) = xor_single_byte(block.encode().hex())
+                if score != 0:
+                   probable_key += chr(key_byte)
 
-    print(f"\nProbable key is \"{potential_keys}\"\n\n")
+            if key_sz == len(probable_key):
+                potential_keys.append(probable_key)
 
-    dec_message = decrypt_message(message, potential_keys[0])
-    print(dec_message)
-Probable key is "['Terminator X: Bring the noise']"
-"""
+        print(f"\nProbable key is \"{potential_keys}\"\n\n")
+
+        dec_message = decrypt_message(message, potential_keys[0])
+        print(dec_message)
+    #Probable key is "['Terminator X: Bring the noise']"
+
+if __name__ == '__main__':
+    main()
