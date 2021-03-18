@@ -8,6 +8,12 @@ block_size = 16
 
 def cbc_encrypt(msg, key, iv):
 
+    # check that msg == hex, key == hex, iv == hex
+    # I should probably handle these better but whatever
+    assert int(msg, 16)
+    assert int(key, 16)
+    assert int(iv, 16)
+
     padded_msg = pkcs7_pad(msg, block_size)
     msg_blocks = [ padded_msg[i:(i+block_size*2)] for i in range(0, len(padded_msg), block_size*2) ]
 

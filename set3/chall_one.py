@@ -115,18 +115,19 @@ def apply_injections(ciphertext, iv):
 
 
 # brief sanity check that encryption and decryption work
-print( base64.b64decode(rand_msg))
-(ciphertext, iv) = encryption_oracle(base64.b64decode(rand_msg).hex())
-assert True == decryption_oracle(ciphertext, iv)
+def main():
+    print( base64.b64decode(rand_msg))
+    (ciphertext, iv) = encryption_oracle(base64.b64decode(rand_msg).hex())
+    assert True == decryption_oracle(ciphertext, iv)
 
-plaintext = apply_injections(ciphertext, iv)
-unpadded_plaintext = pkcs7_unpad(plaintext.encode())
+    plaintext = apply_injections(ciphertext, iv)
+    unpadded_plaintext = pkcs7_unpad(plaintext.encode())
 
-print(f"Plaintext is \t\t{plaintext.encode()}\nUnpadded is \t\t{unpadded_plaintext}\n\n\n\n")
+    print(f"Plaintext is \t\t{plaintext.encode()}\nUnpadded is \t\t{unpadded_plaintext}\n\n\n\n")
 
-assert unpadded_plaintext == base64.b64decode(rand_msg)
+    assert unpadded_plaintext == base64.b64decode(rand_msg)
 
-
-
+if __name__ == '__main__':
+    main()
 
 

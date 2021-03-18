@@ -11,9 +11,13 @@ def aes_ecb_decrypt(CipherObj, ciphertext):
     decryptor = CipherObj.decryptor()
     return decryptor.update(ciphertext) + decryptor.finalize()
 
-#with open('7.txt', 'r') as f:
-#    ciphertext = base64.b64decode( f.read().strip() )
-#    key = b"YELLOW SUBMARINE"
-#    CipherObj = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend() )
-#    dt = aes_ecb_decrypt(CipherObj, ciphertext)
-#    print(dt)
+def main():
+    with open('7.txt', 'r') as f:
+        ciphertext = base64.b64decode( f.read().strip() )
+        key = b"YELLOW SUBMARINE"
+        CipherObj = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend() )
+        dt = aes_ecb_decrypt(CipherObj, ciphertext)
+        print(dt)
+
+if __name__ == '__main__':
+    main()

@@ -13,7 +13,11 @@ def aes_ctr_operation(key, data, nonce):
     while block:
         ctr_data = pack('<QQ', int(nonce, 16), ctr)      # see struct library for packing formatting
         aes_out = aes_ecb_encrypt_with_key(ctr_data, bytes.fromhex(key))
-        ctr_output += xor_hex_strings(aes_out[0].hex()[:len(block)], block)
+
+        temp_output = xor_hex_strings(aes_out[0].hex()[:len(block)], block)
+        if len(temp_output) % 2: temp_output = '0' + temp_output
+
+        ctr_output += temp_output
 
         ctr += 1
         block = data[ctr*32:(ctr+1)*32]
