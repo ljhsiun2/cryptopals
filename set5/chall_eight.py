@@ -1,4 +1,4 @@
-from sympy import integer_nthroot, div
+from sympy import integer_nthroot
 from set5.chall_seven import rsa_encrypt, rsa_decrypt, get_rsa_keys, mod_inv
 import codecs
 
